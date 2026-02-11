@@ -1,60 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Hug Day</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            width: 90%;
-            max-width: 400px;
-        }
-        h1 {
-            color: #e91e63;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .login-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .cancel-btn {
-            background-color: #f44336;
-            color: white;
-        }
-        .hidden {
-            display: none;
-        }
-        img {
-            width: 100%;
-            border-radius: 15px;
-            margin-top: 15px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Hug Day</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Container animation */
+.container {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 400px;
+    animation: fadeSlide 1s ease forwards;
+}
+
+/* Fade + slide */
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulse effect */
+.pulse {
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+h1 {
+    color: #e91e63;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s;
+}
+button:hover {
+    transform: scale(1.1);
+}
+
+.login-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+.cancel-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Image animation */
+img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 15px;
+    animation: zoomIn 1s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+</style>
 </head>
+
 <body>
 
-<div class="container" id="loginSection">
+<div class="container pulse" id="loginSection">
     <h1>Welcome ❤️</h1>
     <p>Do you want to see the Hug Day Surprise?</p>
     <button class="login-btn" onclick="showWish()">Login</button>
@@ -64,24 +135,33 @@
 <div class="container hidden" id="wishSection">
     <h1>Happy Hug Day 🤗</h1>
     <p>Sending you lots of love and warm hugs!</p>
-    <!-- Replace image1.jpg with your photo file name -->
-    <img src="photo2.jpg.png" alt="photo2.jpg.png">
+    <img src="photo2.jpg.png" alt="Hug Day Image">
 </div>
 
 <script>
-    function showWish() {
-        document.getElementById('loginSection').classList.add('hidden');
-        document.getElementById('wishSection').classList.remove('hidden');
-    }
+function showWish() {
+    document.getElementById('loginSection').classList.add('hidden');
+    document.getElementById('wishSection').classList.remove('hidden');
+}
 
-    function cancelWish() {
-        alert("Maybe next time! ❤️");
-    }
+/* Floating hearts generator */
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}, 500);
+
+function cancelWish() {
+    alert("Maybe next time! ❤️");
+}
 </script>
 
 </body>
 </html>
-
-
-
-
