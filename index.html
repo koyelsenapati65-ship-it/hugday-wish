@@ -4,65 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Hug Day</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 400px;
+        }
+        h1 {
+            color: #e91e63;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .login-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .cancel-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+        img {
+            width: 100%;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+    </style>
 </head>
-<body class="bg-pink-100 flex items-center justify-center min-h-screen">
+<body>
 
-    <!-- Login Card -->
-    <div id="loginCard" class="bg-white p-8 rounded-2xl shadow-xl w-96">
-        <h1 class="text-2xl font-bold text-center text-pink-600 mb-6">🤗 Hug Day Login</h1>
-        
-        <input type="text" id="username" placeholder="Enter your name"
-            class="w-full p-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-pink-400">
-        
-        <div class="flex justify-between">
-            <button onclick="login()"
-                class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg w-1/2 mr-2">
-                Login
-            </button>
-            
-            <button onclick="cancel()"
-                class="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg w-1/2 ml-2">
-                Cancel
-            </button>
-        </div>
-    </div>
+<div class="container" id="loginSection">
+    <h1>Welcome ❤️</h1>
+    <p>Do you want to see the Hug Day Surprise?</p>
+    <button class="login-btn" onclick="showWish()">Login</button>
+    <button class="cancel-btn" onclick="cancelWish()">Cancel</button>
+</div>
 
-    <!-- Wish Card -->
-    <div id="wishCard" class="hidden bg-white p-10 rounded-2xl shadow-xl text-center">
-        <img src="hug.jpg" alt="Happy Hug Day" class="w-40 h-40 mx-auto rounded-full mb-4 shadow-lg object-cover">
-        <h1 class="text-3xl font-bold text-pink-600 mb-4">Happy Hug Day 🤗💖</h1>
-        <p id="wishMessage" class="text-lg text-gray-700"></p>
-        <button onclick="goBack()"
-            class="mt-6 bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg">
-            Back
-        </button>
-    </div>
+<div class="container hidden" id="wishSection">
+    <h1>Happy Hug Day 🤗</h1>
+    <p>Sending you lots of love and warm hugs!</p>
+    <!-- Replace image1.jpg with your photo file name -->
+    <img src="photo.jpg" alt="Hug Day Photo">
+</div>
 
-    <script>
-        function login() {
-            const name = document.getElementById("username").value.trim();
-            if (name === "") {
-                alert("Please enter your name!");
-                return;
-            }
-            document.getElementById("loginCard").classList.add("hidden");
-            document.getElementById("wishCard").classList.remove("hidden");
-            document.getElementById("wishMessage").innerText =
-                "Dear " + name + ", sending you a warm hug filled with love and happiness! 💕🤗";
-        }
+<script>
+    function showWish() {
+        document.getElementById('loginSection').classList.add('hidden');
+        document.getElementById('wishSection').classList.remove('hidden');
+    }
 
-        function cancel() {
-            document.getElementById("username").value = "";
-            alert("Login cancelled!");
-        }
-
-        function goBack() {
-            document.getElementById("wishCard").classList.add("hidden");
-            document.getElementById("loginCard").classList.remove("hidden");
-            document.getElementById("username").value = "";
-        }
-    </script>
+    function cancelWish() {
+        alert("Maybe next time! ❤️");
+    }
+</script>
 
 </body>
 </html>
