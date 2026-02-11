@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday My Love ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 30px;
+}
+
+h1 {
+    font-size: 40px;
+    margin-top: 30px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 25px yellow; }
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.gallery img {
+    width: 250px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+button {
+    margin-top: 40px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4e8a;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.message {
+    margin-top: 30px;
+    font-size: 22px;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Happy Birthday My Love 🎂❤️</h1>
+    <p>You are my happiness, my smile, my everything 💕</p>
+
+    <div class="gallery">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+    </div>
+
+    <button onclick="showMessage()">Click for Surprise 🎁</button>
+
+    <div class="message" id="msg">
+        💖 I am so lucky to have you in my life.  
+        May your day be filled with love, joy, and endless happiness.  
+        I love you forever ❤️
+    </div>
+</div>
+
+<script>
+function showMessage() {
+    document.getElementById("msg").style.display = "block";
+}
+</script>
+
+</body>
+</html>
